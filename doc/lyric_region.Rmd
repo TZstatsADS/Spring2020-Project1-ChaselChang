@@ -1,9 +1,9 @@
 ---
 title: "Do musicians from different regions think differently?"
 output:
-  word_document: default
   pdf_document: default
   html_document: default
+  word_document: default
 ---
 
 Music being quite subjective, do different cultures of regions affect the attitudes musicians hold, the topics they discuss and the sentiments they show in their lyrics?
@@ -22,7 +22,7 @@ library(tidytext)
 library(DT)
 library(rvest)
 library(tibble)
-Sys.setenv(JAVA_HOME='C:/Program Files/Java/jre1.8.0_241')
+#Sys.setenv(JAVA_HOME='C:/Program Files/Java/jre1.8.0_241')
 library(qdap)
 library(sentimentr)
 library(gplots)
@@ -247,7 +247,7 @@ barplot(emo.WEU[order(emo.WEU)], las=2, col=col.use[order(emo.WEU)], horiz=T, ma
 
 Quite suprisingly, the graphs of sentiments from different regions seem almostly identical. 
 
-###It turns out that even if the topics and languages differ, the emotions and feelings of songs are all the same for people around the world. Joy, anticipation and trust for the most moments, but also sadness and anger. This distribution of emotions seem to be universal, across all types of musics.
+### It turns out that even if the topics and languages differ, the emotions and feelings of songs are all the same for people around the world. Joy, anticipation and trust for the most moments, but also sadness and anger. This distribution of emotions seem to be universal, across all types of musics.
 Assumingly, if we seperate the lyrics into different types of musics, then Rock would probably have a different distribution of emotions from Jazz and Folk. But with all types of musics mixed up, the difference of regions would not bring a noticable difference to this distribution. It appears that we have found a universal pattern of sentiments in lyrics all over the world.
 
 ## Conclusion
