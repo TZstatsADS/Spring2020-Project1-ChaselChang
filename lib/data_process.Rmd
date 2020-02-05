@@ -1,0 +1,156 @@
+---
+title: "data_process"
+output: html_document
+---
+
+```{r load libraries, warning=FALSE, message=FALSE}
+library(dbplyr)
+library(tidyverse)
+library(tm)
+library(data.table)
+library(tidytext)
+library(DT)
+library(rvest)
+library(tibble)
+Sys.setenv(JAVA_HOME='C:/Program Files/Java/jre1.8.0_241')
+library(qdap)
+library(sentimentr)
+library(gplots)
+library(syuzhet)
+library(factoextra)
+library(beeswarm)
+library(scales)
+library(RColorBrewer)
+library(RANN)
+library(topicmodels)
+library(wordcloud2)
+library(knitr)
+library(kableExtra)
+library(d3heatmap)
+```
+
+```{r}
+# seperate by region
+artists <- read.csv("../data/artists.csv")
+artists$Origin <- as.character(artists$Origin)
+artists$Artist <- as.character(artists$Artist)
+#Great Britain
+GBA <- artists %>% dplyr::filter(grepl("England",Origin) | grepl("Scotland",Origin) | grepl("Wales",Origin))
+GBA$Origin <- "Britain"
+#France
+FRA <- artists %>% dplyr::filter(grepl("France",Origin))
+FRA$Origin <- "France"
+#Germany
+GEA <- artists %>% dplyr::filter(grepl("Germany",Origin))
+GEA$Origin <- "Germany"
+#Northern Europe
+NEA <- artists %>% dplyr::filter(grepl("sweden",Origin) | grepl("Norway",Origin) | grepl("Finland",Origin))
+NEA$Origin <- "Northern_Europe"
+#Northeast USA
+NEU <- artists %>% dplyr::filter(grepl("NH",Origin) | grepl("ME",Origin) | grepl("VT",Origin) | grepl("MA",Origin) | grepl("NY",Origin) | grepl("RI",Origin) | 
+                                 grepl("CT",Origin) | grepl("PA",Origin) | grepl("NJ",Origin))
+NEU$Origin <- "Northeast"
+#Mideast USA
+MEU <- artists %>% dplyr::filter(grepl("ND",Origin) | grepl("MA",Origin) | grepl("SD",Origin) | grepl("WI",Origin) | grepl("MI",Origin) | grepl("IA",Origin) | 
+                                 grepl("NE",Origin) | grepl("OH",Origin) | grepl("IN",Origin) | grepl("IL",Origin) | grepl("MO",Origin) | grepl("KS",Origin))
+MEU$Origin <- "Mideast"
+#South USA
+SOU <- artists %>% dplyr::filter(grepl("DE",Origin) | grepl("MD",Origin) | grepl("DC",Origin) | grepl("WV",Origin) | grepl("VA",Origin) | grepl("KY",Origin) | 
+                                 grepl("NC",Origin) | grepl("TN",Origin) | grepl("OK",Origin) | grepl("AR",Origin) | grepl("SC",Origin) | grepl("GA",Origin) | 
+                                 grepl("TX",Origin) | grepl("LA",Origin) | grepl("MS",Origin) | grepl("AL",Origin) | grepl("FL",Origin))
+SOU$Origin <- "South"
+#West USA
+WEU <- artists %>% dplyr::filter(grepl("WA",Origin) | grepl("MT",Origin) | grepl("OR",Origin) | grepl("ID",Origin) | grepl("WY",Origin) | grepl("NV",Origin) | 
+                                 grepl("UT",Origin) | grepl("CO",Origin) | grepl("CA",Origin) | grepl("AZ",Origin) | grepl("NM",Origin) | grepl("AK",Origin))
+WEU$Origin <- "West"
+#Combine processed data
+pcd_artist <- dplyr::bind_rows(GBA,FRA,GEA,NEA,NEU,MEU,SOU,WEU) %>% dplyr::arrange(Artist) %>% dplyr::select(Artist, Origin)
+
+load("../data/lyrics.RData")
+dt_lyrics <- rename(dt_lyrics, Artist = artist)
+
+GBA_lyrics <- dplyr::inner_join(GBA, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+FRA_lyrics <- dplyr::inner_join(FRA, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+GEA_lyrics <- dplyr::inner_join(GEA, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+NEA_lyrics <- dplyr::inner_join(NEA, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+NEU_lyrics <- dplyr::inner_join(NEU, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+MEU_lyrics <- dplyr::inner_join(MEU, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+SOU_lyrics <- dplyr::inner_join(SOU, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+WEU_lyrics <- dplyr::inner_join(WEU, dt_lyrics, by = "Artist") %>% dplyr::select(Artist, Origin, song, lyrics)
+```
+
+```{r}
+#stem function
+
+stemlrc <- function(lrc) {
+  # function for removimg leading and trailing whitespace from character strings 
+  leadingWhitespace <- content_transformer(function(x) str_trim(x, side = "both"))
+  # remove stop words
+  data("stop_words")
+  word <- c("lot", "today", "months", "month", "wanna", "wouldnt", "wasnt", "ha", "na", "ooh", "da",
+          "gonna", "im", "dont", "aint", "wont", "yeah", "la", "oi", "nigga", "fuck",
+            "hey", "year", "years", "last", "past", "feel")
+  stop_words <- c(stop_words$word, word)
+  # clean the data and make a corpus
+  corpus <- VCorpus(VectorSource(lrc$lyrics))%>%
+    tm_map(content_transformer(tolower))%>%
+    tm_map(removePunctuation)%>%
+    tm_map(removeWords, character(0))%>%
+    tm_map(removeWords, stop_words)%>%
+    tm_map(removeNumbers)%>%
+    tm_map(stripWhitespace)%>%
+    tm_map(leadingWhitespace)
+  
+  stemmed <- tm_map(corpus, stemDocument) %>%
+    tidy() %>%
+    select(text)
+  
+  dict <- tidy(corpus) %>%
+    select(text) %>%
+    unnest_tokens(dictionary, text)
+  
+  completed <- stemmed %>%
+    mutate(id = row_number()) %>%
+    unnest_tokens(stems, text) %>%
+    bind_cols(dict)
+  
+  completed <- completed %>%
+    group_by(stems) %>%
+    count(dictionary) %>%
+    mutate(word = dictionary[which.max(n)]) %>%
+    ungroup() %>%
+    select(stems, word) %>%
+    distinct() %>%
+    right_join(completed) %>%
+    select(-stems)
+  
+  completed <- completed %>%
+    group_by(id) %>%
+    summarise(stemmedwords= str_c(word, collapse = " ")) %>%
+    ungroup()
+  
+  lrc <- lrc %>%
+    mutate(id = row_number()) %>%
+    inner_join(completed)
+  return(lrc)
+}
+
+GBA_lyrics <- stemlrc(GBA_lyrics)
+FRA_lyrics <- stemlrc(FRA_lyrics)
+GEA_lyrics <- stemlrc(GEA_lyrics)
+NEA_lyrics <- stemlrc(NEA_lyrics)
+NEU_lyrics <- stemlrc(NEU_lyrics)
+MEU_lyrics <- stemlrc(MEU_lyrics)
+SOU_lyrics <- stemlrc(SOU_lyrics)
+WEU_lyrics <- stemlrc(WEU_lyrics)
+
+save(GBA_lyrics, file="../output/GBA_lyrics.RData")
+save(FRA_lyrics, file="../output/FRA_lyrics.RData")
+save(GEA_lyrics, file="../output/GEA_lyrics.RData")
+save(NEA_lyrics, file="../output/NEA_lyrics.RData")
+save(NEU_lyrics, file="../output/NEU_lyrics.RData")
+save(MEU_lyrics, file="../output/MEU_lyrics.RData")
+save(SOU_lyrics, file="../output/SOU_lyrics.RData")
+save(WEU_lyrics, file="../output/WEU_lyrics.RData")
+```
+
