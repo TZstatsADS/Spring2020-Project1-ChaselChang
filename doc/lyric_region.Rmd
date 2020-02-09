@@ -1,8 +1,8 @@
 ---
 title: "Do musicians from different regions think differently?"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 
@@ -245,10 +245,15 @@ emo.WEU=colMeans(select(WEU_sentis, anger:trust)>0.01)
 barplot(emo.WEU[order(emo.WEU)], las=2, col=col.use[order(emo.WEU)], horiz=T, main="West Lyrics")
 ```
 
-Quite suprisingly, the graphs of sentiments from different regions seem almostly identical. 
+As we can see from the graphs, mojority of the regions have more songs of joy and other positive emotions than songs of sadness and fear (5 out of 8), while northern European , western American and German songs would more often be sad rather than joyful. This result is roughly consistent with the previous topic modelling and word frequency analysis where German and northern European songs tend to foucus more on dramatic topics and use words such as death, break, dark more oftern than songs of other regions. At the same time, it is quite consistent with our common senses about musics as well.
 
-### It turns out that even if the topics and languages differ, the emotions and feelings of songs are all the same for people around the world. Joy, anticipation and trust for the most moments, but also sadness and anger. This distribution of emotions seem to be universal, across all types of musics.
-Assumingly, if we seperate the lyrics into different types of musics, then Rock would probably have a different distribution of emotions from Jazz and Folk. But with all types of musics mixed up, the difference of regions would not bring a noticable difference to this distribution. It appears that we have found a universal pattern of sentiments in lyrics all over the world.
+As it comes to other main-stream emotions such as "disgust", "surprise" and "anger", they have the lowest proportions in all the eight regions we discuss in this report. This could be due to their natures of being "not poetic" enough. A song about being "disgusted" may not seem very romantic.
+
+Within five regions having mainly joyful lyrics, the emotions in lyrics seem to share almost identical distributions, except some minor switch of positions between joy, anticipation and trust or sadness and fear. Three regions that tend to like sad songs, on the other hand, have emotion distributions with considerable difference.
+
+It turns out that when it comes to celebrate joy and happiness, even if the topics and languages differ, the emotions and feelings of songs could be similarly distributed for people all around the world. But when it comes to sad lyrics, the differences tend to be more noticable. This is in fact quite understandable. "All happy families are alike; each unhappy family is unhappy in its own way."
+
+Assumingly, if we seperate the lyrics into different types of musics, then Rock would probably have a different distribution of emotions from Jazz and Folk. A following analysis on a specific type of music from different regions could probably birng us some more significant results, since the features which could affect the distribution of emotions "region" and "type" would be seperated in that case.
 
 ## Conclusion
-The usage of words can differ from regions, and the topics that different regions would prefer are not quite the same, yet consistent with common senses. The proportions of emotions expressed would not, however, change with regions. There seem to be a universal pattern of sentiment that human sing about.
+In the eight regions this report analyzed, the usage of words can differ, and the topics that different regions would prefer are not quite the same, yet consistent with common senses. Regions that prefer happy songs tend to have all similar proportions of emotions, while musicians from sad song enthusiast regions may have different emotional proportions in their works. To conclude, regional culture difference sometimes does make musicians think differently.

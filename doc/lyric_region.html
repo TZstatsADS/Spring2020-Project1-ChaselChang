@@ -400,7 +400,7 @@ library(tidytext)
 library(DT)
 library(rvest)
 library(tibble)
-Sys.setenv(JAVA_HOME=&#39;C:/Program Files/Java/jre1.8.0_241&#39;)
+#Sys.setenv(JAVA_HOME=&#39;C:/Program Files/Java/jre1.8.0_241&#39;)
 library(qdap)
 library(sentimentr)
 library(gplots)
@@ -538,41 +538,13 @@ Topic 4
 <tbody>
 <tr>
 <td style="text-align:center;">
-love
-</td>
-<td style="text-align:center;">
-love
-</td>
-<td style="text-align:center;">
 time
 </td>
 <td style="text-align:center;">
 love
 </td>
-</tr>
-<tr>
-<td style="text-align:center;">
-time
-</td>
-<td style="text-align:center;">
-baby
-</td>
 <td style="text-align:center;">
 love
-</td>
-<td style="text-align:center;">
-time
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-youre
-</td>
-<td style="text-align:center;">
-youre
-</td>
-<td style="text-align:center;">
-youre
 </td>
 <td style="text-align:center;">
 world
@@ -580,13 +552,27 @@ world
 </tr>
 <tr>
 <td style="text-align:center;">
-day
+ill
+</td>
+<td style="text-align:center;">
+baby
 </td>
 <td style="text-align:center;">
 time
 </td>
 <td style="text-align:center;">
-ill
+love
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+youre
+</td>
+<td style="text-align:center;">
+youre
+</td>
+<td style="text-align:center;">
+youre
 </td>
 <td style="text-align:center;">
 life
@@ -594,7 +580,21 @@ life
 </tr>
 <tr>
 <td style="text-align:center;">
-baby
+life
+</td>
+<td style="text-align:center;">
+time
+</td>
+<td style="text-align:center;">
+day
+</td>
+<td style="text-align:center;">
+time
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+love
 </td>
 <td style="text-align:center;">
 day
@@ -608,13 +608,13 @@ night
 </tr>
 <tr>
 <td style="text-align:center;">
-night
+die
 </td>
 <td style="text-align:center;">
-gotta
+ill
 </td>
 <td style="text-align:center;">
-life
+ill
 </td>
 <td style="text-align:center;">
 day
@@ -622,13 +622,27 @@ day
 </tr>
 <tr>
 <td style="text-align:center;">
-heart
+ive
+</td>
+<td style="text-align:center;">
+gotta
 </td>
 <td style="text-align:center;">
 night
 </td>
 <td style="text-align:center;">
 live
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+fall
+</td>
+<td style="text-align:center;">
+night
+</td>
+<td style="text-align:center;">
+heart
 </td>
 <td style="text-align:center;">
 youre
@@ -636,27 +650,41 @@ youre
 </tr>
 <tr>
 <td style="text-align:center;">
-eyes
+live
 </td>
 <td style="text-align:center;">
 girl
 </td>
 <td style="text-align:center;">
-day
-</td>
-<td style="text-align:center;">
-live
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-friend
+life
 </td>
 <td style="text-align:center;">
 heart
 </td>
+</tr>
+<tr>
 <td style="text-align:center;">
-night
+eyes
+</td>
+<td style="text-align:center;">
+life
+</td>
+<td style="text-align:center;">
+eyes
+</td>
+<td style="text-align:center;">
+die
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+world
+</td>
+<td style="text-align:center;">
+world
+</td>
+<td style="text-align:center;">
+live
 </td>
 <td style="text-align:center;">
 light
@@ -664,153 +692,13 @@ light
 </tr>
 <tr>
 <td style="text-align:center;">
-talk
-</td>
-<td style="text-align:center;">
-eyes
-</td>
-<td style="text-align:center;">
-world
-</td>
-<td style="text-align:center;">
-heart
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-world
-</td>
-<td style="text-align:center;">
-world
-</td>
-<td style="text-align:center;">
-eyes
-</td>
-<td style="text-align:center;">
-die
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-stop
-</td>
-<td style="text-align:center;">
 dream
 </td>
 <td style="text-align:center;">
-heart
-</td>
-<td style="text-align:center;">
 eyes
 </td>
-</tr>
-<tr>
 <td style="text-align:center;">
-call
-</td>
-<td style="text-align:center;">
-ya
-</td>
-<td style="text-align:center;">
-tonight
-</td>
-<td style="text-align:center;">
-dark
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-fall
-</td>
-<td style="text-align:center;">
-live
-</td>
-<td style="text-align:center;">
-die
-</td>
-<td style="text-align:center;">
-cry
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-hear
-</td>
-<td style="text-align:center;">
-ill
-</td>
-<td style="text-align:center;">
-fall
-</td>
-<td style="text-align:center;">
-fall
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-life
-</td>
-<td style="text-align:center;">
-head
-</td>
-<td style="text-align:center;">
-leave
-</td>
-<td style="text-align:center;">
-soul
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-round
-</td>
-<td style="text-align:center;">
-life
-</td>
-<td style="text-align:center;">
-home
-</td>
-<td style="text-align:center;">
-ill
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-waiting
-</td>
-<td style="text-align:center;">
-fall
-</td>
-<td style="text-align:center;">
-girl
-</td>
-<td style="text-align:center;">
-lies
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-gotta
-</td>
-<td style="text-align:center;">
-talk
-</td>
-<td style="text-align:center;">
-baby
-</td>
-<td style="text-align:center;">
-pain
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-mind
-</td>
-<td style="text-align:center;">
-feeling
-</td>
-<td style="text-align:center;">
-dream
+lie
 </td>
 <td style="text-align:center;">
 free
@@ -818,13 +706,167 @@ free
 </tr>
 <tr>
 <td style="text-align:center;">
-run
+light
+</td>
+<td style="text-align:center;">
+live
+</td>
+<td style="text-align:center;">
+world
+</td>
+<td style="text-align:center;">
+cry
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+dark
+</td>
+<td style="text-align:center;">
+heart
+</td>
+<td style="text-align:center;">
+baby
+</td>
+<td style="text-align:center;">
+eyes
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+leave
+</td>
+<td style="text-align:center;">
+dream
+</td>
+<td style="text-align:center;">
+home
+</td>
+<td style="text-align:center;">
+rock
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+mind
+</td>
+<td style="text-align:center;">
+ive
+</td>
+<td style="text-align:center;">
+girl
+</td>
+<td style="text-align:center;">
+human
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+day
+</td>
+<td style="text-align:center;">
+die
+</td>
+<td style="text-align:center;">
+fall
+</td>
+<td style="text-align:center;">
+dark
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+burn
+</td>
+<td style="text-align:center;">
+head
 </td>
 <td style="text-align:center;">
 call
 </td>
 <td style="text-align:center;">
+burning
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+cry
+</td>
+<td style="text-align:center;">
+fall
+</td>
+<td style="text-align:center;">
+tonight
+</td>
+<td style="text-align:center;">
+pain
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+god
+</td>
+<td style="text-align:center;">
+chorus
+</td>
+<td style="text-align:center;">
 hand
+</td>
+<td style="text-align:center;">
+kill
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+care
+</td>
+<td style="text-align:center;">
+shes
+</td>
+<td style="text-align:center;">
+hear
+</td>
+<td style="text-align:center;">
+fight
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+cold
+</td>
+<td style="text-align:center;">
+call
+</td>
+<td style="text-align:center;">
+mind
+</td>
+<td style="text-align:center;">
+soul
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+soul
+</td>
+<td style="text-align:center;">
+ya
+</td>
+<td style="text-align:center;">
+run
+</td>
+<td style="text-align:center;">
+lies
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+blood
+</td>
+<td style="text-align:center;">
+mind
+</td>
+<td style="text-align:center;">
+stop
 </td>
 <td style="text-align:center;">
 hear
@@ -832,13 +874,13 @@ hear
 </tr>
 <tr>
 <td style="text-align:center;">
-girl
+inside
 </td>
 <td style="text-align:center;">
-shes
+feeling
 </td>
 <td style="text-align:center;">
-left
+walk
 </td>
 <td style="text-align:center;">
 death
@@ -846,21 +888,35 @@ death
 </tr>
 <tr>
 <td style="text-align:center;">
-ive
+stay
 </td>
 <td style="text-align:center;">
-rock
+stand
+</td>
+<td style="text-align:center;">
+leave
+</td>
+<td style="text-align:center;">
+dreams
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+night
+</td>
+<td style="text-align:center;">
+leave
 </td>
 <td style="text-align:center;">
 chorus
 </td>
 <td style="text-align:center;">
-mind
+fall
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-move
+heart
 </td>
 <td style="text-align:center;">
 miss
@@ -869,91 +925,35 @@ miss
 light
 </td>
 <td style="text-align:center;">
-kill
+run
 </td>
 </tr>
 <tr>
 <td style="text-align:center;">
-light
-</td>
-<td style="text-align:center;">
-dah
-</td>
-<td style="text-align:center;">
-call
-</td>
-<td style="text-align:center;">
-leave
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-live
-</td>
-<td style="text-align:center;">
-ive
-</td>
-<td style="text-align:center;">
-mind
-</td>
-<td style="text-align:center;">
-waiting
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-hold
-</td>
-<td style="text-align:center;">
-stop
-</td>
-<td style="text-align:center;">
-walk
-</td>
-<td style="text-align:center;">
-fear
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-youll
+hand
 </td>
 <td style="text-align:center;">
 hold
 </td>
 <td style="text-align:center;">
-words
-</td>
-<td style="text-align:center;">
-human
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-sky
-</td>
-<td style="text-align:center;">
-boy
-</td>
-<td style="text-align:center;">
-hope
-</td>
-<td style="text-align:center;">
-rock
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-head
-</td>
-<td style="text-align:center;">
-chorus
-</td>
-<td style="text-align:center;">
-lie
+hold
 </td>
 <td style="text-align:center;">
 inside
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+left
+</td>
+<td style="text-align:center;">
+burn
+</td>
+<td style="text-align:center;">
+shes
+</td>
+<td style="text-align:center;">
+stop
 </td>
 </tr>
 </tbody>
@@ -1038,15 +1038,15 @@ barplot(emo.SOU[order(emo.SOU)], las=2, col=col.use[order(emo.SOU)], horiz=T, ma
 <pre class="r"><code>emo.WEU=colMeans(select(WEU_sentis, anger:trust)&gt;0.01)
 barplot(emo.WEU[order(emo.WEU)], las=2, col=col.use[order(emo.WEU)], horiz=T, main=&quot;West Lyrics&quot;)</code></pre>
 <p><img src="data:image/png;base64,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RgEGgHIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAEEGAACCDAABBAgAEggAADQAABBoAAAgwAAQQYAAIIMAAE+P8BeH2RP1kVlz0AAAAASUVORK5CYII=" width="960" /></p>
-<p>Quite suprisingly, the graphs of sentiments from different regions seem almostly identical.</p>
-<div id="it-turns-out-that-even-if-the-topics-and-languages-differ-the-emotions-and-feelings-of-songs-are-all-the-same-for-people-around-the-world.-joy-anticipation-and-trust-for-the-most-moments-but-also-sadness-and-anger.-this-distribution-of-emotions-seem-to-be-universal-across-all-types-of-musics." class="section level3">
-<h3>It turns out that even if the topics and languages differ, the emotions and feelings of songs are all the same for people around the world. Joy, anticipation and trust for the most moments, but also sadness and anger. This distribution of emotions seem to be universal, across all types of musics.</h3>
-<p>Assumingly, if we seperate the lyrics into different types of musics, then Rock would probably have a different distribution of emotions from Jazz and Folk. But with all types of musics mixed up, the difference of regions would not bring a noticable difference to this distribution. It appears that we have found a universal pattern of sentiments in lyrics all over the world.</p>
-</div>
+<p>As we can see from the graphs, mojority of the regions have more songs of joy and other positive emotions than songs of sadness and fear (5 out of 8), while northern European , western American and German songs would more often be sad rather than joyful. This result is roughly consistent with the previous topic modelling and word frequency analysis where German and northern European songs tend to foucus more on dramatic topics and use words such as death, break, dark more oftern than songs of other regions. At the same time, it is quite consistent with our common senses about musics as well.</p>
+<p>As it comes to other main-stream emotions such as “disgust”, “surprise” and “anger”, they have the lowest proportions in all the eight regions we discuss in this report. This could be due to their natures of being “not poetic” enough. A song about being “disgusted” may not seem very romantic.</p>
+<p>Within five regions having mainly joyful lyrics, the emotions in lyrics seem to share almost identical distributions, except some minor switch of positions between joy, anticipation and trust or sadness and fear. Three regions that tend to like sad songs, on the other hand, have emotion distributions with considerable difference.</p>
+<p>It turns out that when it comes to celebrate joy and happiness, even if the topics and languages differ, the emotions and feelings of songs could be similarly distributed for people all around the world. But when it comes to sad lyrics, the differences tend to be more noticable. This is in fact quite understandable. “All happy families are alike; each unhappy family is unhappy in its own way.”</p>
+<p>Assumingly, if we seperate the lyrics into different types of musics, then Rock would probably have a different distribution of emotions from Jazz and Folk. A following analysis on a specific type of music from different regions could probably birng us some more significant results, since the features which could affect the distribution of emotions “region” and “type” would be seperated in that case.</p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>The usage of words can differ from regions, and the topics that different regions would prefer are not quite the same, yet consistent with common senses. The proportions of emotions expressed would not, however, change with regions. There seem to be a universal pattern of sentiment that human sing about.</p>
+<p>In the eight regions this report analyzed, the usage of words can differ, and the topics that different regions would prefer are not quite the same, yet consistent with common senses. Regions that prefer happy songs tend to have all similar proportions of emotions, while musicians from sad song enthusiast regions may have different emotional proportions in their works. To conclude, regional culture difference sometimes does make musicians think differently.</p>
 </div>
 
 
