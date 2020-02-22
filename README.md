@@ -1,18 +1,16 @@
 # Applied Data Science @ Columbia
 ## Spring 2020
-## Project 1: A "data story" on the songs of our times
+## Project 1: Text Mining on Lyrics
 
 <img src="figs/title1.jpeg" width="500">
 
 ### [Project Description](doc/)
-This is the first and only *individual* (as opposed to *team*) this semester. 
 
-Term: Spring 2020
-
-+ Projec title: Lorem ipsum dolor sit amet
++ Projec title: Text Mining on Lyrics
 + This project is conducted by [Tianshu Zhang]
 
 + Project summary: Do musicians from different regions think differently?
+
 This is an analysis on usage of words, topics and sentiments of lyrics from different regions. To discover if there is a difference or some universal pattern throughout the world's lyrics.
 (Techniques used: wordcloud, LDA, heatmap, sentimentr)
 

@@ -1,8 +1,8 @@
 ---
 title: "Do musicians from different regions think differently?"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 
@@ -149,9 +149,9 @@ for (i in 1:k){
   top.terms <- rbind(top.terms, ldaOut@terms[order])
 }
 #top.terms
-kable(lda.terms, align = 'c') %>% 
-                  kable_styling()  %>% 
-                  scroll_box(width = "100%", height = "500px")
+#kable(lda.terms, align = 'c') %>% 
+#                  kable_styling()  %>% 
+#                  scroll_box(width = "100%", height = "500px")
 ```
 
 ```{r, warning = F}

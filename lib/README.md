@@ -2,6 +2,7 @@
 
 ### Code lib Folder
 
-The lib directory contains various files with function definitions (but only function definitions - no code that actually runs).
+The lib directory contains data pre-processing file that generates the input data utlized in analysis report.
+
 Please see data_process.Rmd for pre-processing code.
 
